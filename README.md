@@ -9,8 +9,8 @@ A wrapper library that makes it easy to access data from multiple relational dat
 1. Create Helper
     1. var helper = PL.DataAccess.Factory.CreateDataAccessHelper(**DatabaseType**, **ConnectionString**);
 2. Execute
-    1. var objectList = helper.ExecuteListAsync\<TValue\>(**SQL**, **SqlParameterCollection**);
-    2. var affectedCount = helper.ExecuteNonQuery\<TVAlue\>(**SQL**, **SqlParameterCollection**);
+    1. var objectList = await helper.ExecuteListAsync\<TValue\>(**SQL**, **SqlParameterCollection**);
+    2. var affectedCount = await helper.ExecuteNonQueryAsync\<TVAlue\>(**SQL**, **SqlParameterCollection**);
 
 ### Example
 
