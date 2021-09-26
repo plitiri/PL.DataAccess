@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\01. Common\PL.DataAccess.Common\PL.DataAccess.Common.csproj" />
+    <ProjectReference Include="..\..\02. Providers\PL.DataAccess.Providers.OracleDatabase\PL.DataAccess.Providers.OracleDatabase.csproj" />
+    <ProjectReference Include="..\..\02. Providers\PL.DataAccess.Providers.PostgreSQL\PL.DataAccess.Providers.PostgreSQL.csproj" />
+  </ItemGroup>
+
+</Project>
