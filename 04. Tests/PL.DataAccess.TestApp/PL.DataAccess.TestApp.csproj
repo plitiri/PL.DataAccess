@@ -10,9 +10,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\01. Common\PL.DataAccess.Common\PL.DataAccess.Common.csproj" />
-    <ProjectReference Include="..\..\02. Providers\PL.DataAccess.Providers.OracleDatabase\PL.DataAccess.Providers.OracleDatabase.csproj" />
-    <ProjectReference Include="..\..\02. Providers\PL.DataAccess.Providers.PostgreSQL\PL.DataAccess.Providers.PostgreSQL.csproj" />
     <ProjectReference Include="..\..\03. Library\PL.DataAccess\PL.DataAccess.csproj" />
   </ItemGroup>
 
