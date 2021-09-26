@@ -29,6 +29,39 @@ namespace PL.DataAccess.TestApp
                 var objectList = await helper.ExecuteListAsync<Sample01>("select now() as now;");
                 Console.WriteLine(JsonSerializer.Serialize(objectList, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase }));
             }
+
+
+            //{
+            //    var helper = PL.DataAccess.Factory.CreateDataAccessHelper(DatabaseType.PostgreSQL, ConfigurationManager.ConnectionStrings["PostgreSQL"].ConnectionString);
+            //    var objectList = await helper.ExecuteListAsync<MyTable>("select * from mytable where name = @name", new SqlParameterCollection() { { "NAME", "AA001" } });
+            //}
+
+
+            //{
+            //    var helper = new PL.DataAccess.PostgreSQL.DatabaseAccessHelper(ConfigurationManager.ConnectionStrings["PostgreSQL"].ConnectionString);
+
+            //    // List<List<ExpandoObject>> (means dataset)
+            //    var response = await helper.ExecuteListsAsync("select * from mytable where name = @name", new SqlParameterCollection() { { "NAME", "AA001" } });
+
+            //    // List<ExpandoObject> (means table)
+            //    var expandoList = response.FirstOrDefault();
+            //    var jsonString1 = JsonSerializer.Serialize(expandoList);
+            //    Console.WriteLine(jsonString1);
+
+            //    // List<MyTable> (means table)
+            //    var objectList = ConvertHelper.ToGenericList<List<MyTable>>(expandoList);
+            //    var jsonString2 = JsonSerializer.Serialize(objectList, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase });
+            //    Console.WriteLine(jsonString2);
+
+            //    // List<MyTable> (means table)
+            //    var reversedObjectList = JsonSerializer.Deserialize<List<MyTable>>(jsonString2, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase });
+
+            //    // List<List<MyTable>> (means dataset)
+            //    var objectList2 = await helper.ExecuteListsAsync<MyTable>("select * from mytable where name = @name", new SqlParameterCollection() { { "NAME", "AA001" } });
+
+            //    // List<MyTable> (means table)
+            //    var objectList3 = await helper.ExecuteListAsync<MyTable>("select * from mytable where name = @name", new SqlParameterCollection() { { "NAME", "AA001" } });
+            //}
         }
     }
 
@@ -39,6 +72,17 @@ namespace PL.DataAccess.TestApp
         public override string ToString()
         {
             return $"Now: {Now}";
+        }
+    }
+
+    public class MyTable
+    {
+        public string Name { get; set; }
+        public decimal Age { get; set; }
+
+        public override string ToString()
+        {
+            return $"Name: {Name}, Age: {Age}";
         }
     }
 }
