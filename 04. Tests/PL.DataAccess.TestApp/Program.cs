@@ -16,6 +16,13 @@ namespace PL.DataAccess.TestApp
         {
             Console.WriteLine("Hello World!");
 
+            // MariaDB
+            {
+                var helper = PL.DataAccess.Factory.CreateDataAccessHelper(DatabaseType.MariaDB, ConfigurationManager.ConnectionStrings["MariaDB"].ConnectionString);
+                var objectList = await helper.ExecuteListAsync<Sample01>("select now() as now;");
+                Console.WriteLine(JsonSerializer.Serialize(objectList, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase }));
+            }
+
             // OracleDatabase
             {
                 var helper = PL.DataAccess.Factory.CreateDataAccessHelper(DatabaseType.OracleDatabase, ConfigurationManager.ConnectionStrings["OracleDatabase"].ConnectionString);
@@ -29,7 +36,6 @@ namespace PL.DataAccess.TestApp
                 var objectList = await helper.ExecuteListAsync<Sample01>("select now() as now;");
                 Console.WriteLine(JsonSerializer.Serialize(objectList, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase }));
             }
-
 
             //{
             //    var helper = PL.DataAccess.Factory.CreateDataAccessHelper(DatabaseType.PostgreSQL, ConfigurationManager.ConnectionStrings["PostgreSQL"].ConnectionString);

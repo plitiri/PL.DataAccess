@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\01. Common\PL.DataAccess.Common\PL.DataAccess.Common.csproj" />
+    <ProjectReference Include="..\..\02. Providers\PL.DataAccess.Providers.MariaDB\PL.DataAccess.Providers.MariaDB.csproj" />
     <ProjectReference Include="..\..\02. Providers\PL.DataAccess.Providers.OracleDatabase\PL.DataAccess.Providers.OracleDatabase.csproj" />
     <ProjectReference Include="..\..\02. Providers\PL.DataAccess.Providers.PostgreSQL\PL.DataAccess.Providers.PostgreSQL.csproj" />
   </ItemGroup>

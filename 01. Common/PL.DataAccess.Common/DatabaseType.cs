@@ -6,11 +6,12 @@ namespace PL.DataAccess.Common
     {
         /* RDBMS, Relational DataBase Management System
          */
-        OracleDatabase,
+
         //MicrosoftSQLServer,
-        PostgreSQL,
-        //MariaDB,
+        MariaDB,
         //MySQL,
+        OracleDatabase,
+        PostgreSQL,
         //SQLite,
 
         /* NoSQL, non SQL

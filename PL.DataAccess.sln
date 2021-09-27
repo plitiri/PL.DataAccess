@@ -26,6 +26,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00. Documents", "00. Docume
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PL.DataAccess.Providers.MariaDB", "02. Providers\PL.DataAccess.Providers.MariaDB\PL.DataAccess.Providers.MariaDB.csproj", "{A48FC5E3-A86E-42B7-A723-DDBC87083920}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -52,6 +54,10 @@ Global
 		{35C141C5-E663-41B9-ADFE-E1062063634B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{35C141C5-E663-41B9-ADFE-E1062063634B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{35C141C5-E663-41B9-ADFE-E1062063634B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A48FC5E3-A86E-42B7-A723-DDBC87083920}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A48FC5E3-A86E-42B7-A723-DDBC87083920}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A48FC5E3-A86E-42B7-A723-DDBC87083920}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A48FC5E3-A86E-42B7-A723-DDBC87083920}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,6 +68,7 @@ Global
 		{71672AD7-7CC3-4A9A-ACBD-08F637E6C370} = {B35C4657-C6A0-4E2E-A182-7D0A13963959}
 		{121CA28E-0CA3-4A40-B3FD-7E7DD6FE0A0C} = {ED257126-FDD9-48E4-B674-8A485AA2B295}
 		{35C141C5-E663-41B9-ADFE-E1062063634B} = {6C10814A-CF82-4799-B4C4-9D7FBBB6A3F8}
+		{A48FC5E3-A86E-42B7-A723-DDBC87083920} = {ED257126-FDD9-48E4-B674-8A485AA2B295}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8A62DD81-6FA1-4B04-87FC-ADF431DB8F1F}

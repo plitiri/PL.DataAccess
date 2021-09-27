@@ -1,48 +1,47 @@
-﻿using Npgsql;
+﻿using MySqlConnector;
 using PL.DataAccess.Common;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Dynamic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace PL.DataAccess.Providers.PostgreSQL
+namespace PL.DataAccess.Providers.MariaDB
 {
     /// <summary>
     /// Assistant
     /// </summary>
     public class DatabaseAccessHelper : IDatabaseAccessHelper
     {
-        public DatabaseType DatabaseType => DatabaseType.PostgreSQL;
+        public DatabaseType DatabaseType => DatabaseType.MariaDB;
 
         /// <summary>
-        /// "User ID=postgres; Password=postgres; Host=localhost; Port=5432; Database=postgres; Pooling=true; Connection Lifetime=0;"
+        /// "Server=localhost; Port=3306; User ID=root; Password=password; Database=mysql;"
         /// </summary>
         public string ConnectionString => ConnectionStringBuilder?.ToString();
 
         public CommandType CommandType { get; set; } = CommandType.Text;
 
-        private readonly NpgsqlConnectionStringBuilder ConnectionStringBuilder;
+        private readonly MySqlConnectionStringBuilder ConnectionStringBuilder;
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="connectionString">"User ID=postgres; Password=postgres; Host=localhost; Port=5432; Database=postgres; Pooling=true; Connection Lifetime=0;"</param>
+        /// <param name="connectionString">"Server=localhost; Port=3306; User ID=root; Password=password; Database=mysql;"</param>
         public DatabaseAccessHelper(string connectionString)
         {
-            ConnectionStringBuilder = new NpgsqlConnectionStringBuilder(connectionString);
+            ConnectionStringBuilder = new MySqlConnectionStringBuilder(connectionString);
         }
 
-        public DatabaseAccessHelper(NpgsqlConnectionStringBuilder connectionStringBuilder)
+        public DatabaseAccessHelper(MySqlConnectionStringBuilder connectionStringBuilder)
         {
             ConnectionStringBuilder = connectionStringBuilder;
         }
 
         public async Task<int> ExecuteNonQueryAsync(string commandText, IDictionary<string, object> parameters = default, CancellationToken cancellationToken = default)
         {
-            using (var connection = new NpgsqlConnection(ConnectionStringBuilder.ToString()))
+            using (var connection = new MySqlConnection(ConnectionStringBuilder.ToString()))
             {
                 await connection.OpenAsync();
 
@@ -73,7 +72,7 @@ namespace PL.DataAccess.Providers.PostgreSQL
         public async Task<IList<IList<ExpandoObject>>> ExecuteListsAsync(string commandText, IDictionary<string, object> parameters = default, CancellationToken cancellationToken = default)
         {
             var response = new List<IList<ExpandoObject>>();
-            using(var connection = new NpgsqlConnection(ConnectionStringBuilder.ToString()))
+            using (var connection = new MySqlConnection(ConnectionStringBuilder.ToString()))
             {
                 await connection.OpenAsync();
 
@@ -81,9 +80,9 @@ namespace PL.DataAccess.Providers.PostgreSQL
                 {
                     command.CommandType = this.CommandType;
                     command.CommandText = commandText;
-                    if(parameters != null)
+                    if (parameters != null)
                     {
-                        foreach(var keyValuePair in parameters)
+                        foreach (var keyValuePair in parameters)
                         {
                             command.Parameters.AddWithValue(keyValuePair.Key, keyValuePair.Value);
                         }
@@ -102,7 +101,7 @@ namespace PL.DataAccess.Providers.PostgreSQL
                                     var type = reader.GetFieldType(i);
                                     var value = reader.GetValue(i);
 
-                                    if(obj.TryAdd(name, value) == false)
+                                    if (obj.TryAdd(name, value) == false)
                                     {
                                         throw new ExecuteException("Adding ExpandObject to List<ExpandoObject> failed.");
                                     }
@@ -150,7 +149,7 @@ namespace PL.DataAccess.Providers.PostgreSQL
         public async Task<IList<ExpandoObject>> ExecuteListAsync(string commandText, IDictionary<string, object> parameters = default, CancellationToken cancellationToken = default)
         {
             var response = new List<ExpandoObject>();
-            using (var connection = new NpgsqlConnection(ConnectionStringBuilder.ToString()))
+            using (var connection = new MySqlConnection(ConnectionStringBuilder.ToString()))
             {
                 await connection.OpenAsync();
 

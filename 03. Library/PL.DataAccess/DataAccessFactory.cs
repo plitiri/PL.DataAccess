@@ -9,10 +9,12 @@ namespace PL.DataAccess
         {
             switch(databaseType)
             {
-                case DatabaseType.PostgreSQL: 
-                    return new PostgreSQL.DatabaseAccessHelper(connectionString);
+                case DatabaseType.MariaDB:
+                    return new Providers.MariaDB.DatabaseAccessHelper(connectionString);
                 case DatabaseType.OracleDatabase:
-                    return new OracleDatabase.DatabaseAccessHelper(connectionString);
+                    return new Providers.OracleDatabase.DatabaseAccessHelper(connectionString);
+                case DatabaseType.PostgreSQL:
+                    return new Providers.PostgreSQL.DatabaseAccessHelper(connectionString);
                 default:
                     return null;
             }
