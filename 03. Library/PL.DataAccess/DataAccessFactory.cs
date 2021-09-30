@@ -5,18 +5,41 @@ namespace PL.DataAccess
 {
     public class Factory
     {
-        public static IDatabaseAccessHelper CreateDataAccessHelper(DatabaseType databaseType, string connectionString)
+        /// <summary>
+        /// Create DatabaseAccessHelper
+        /// </summary>
+        /// <exception cref="ExecuteException"></exception>
+        /// <param name="databaseType"></param>
+        /// <param name="connectionString"></param>
+        /// <returns></returns>
+        public static IDatabaseAccessHelper Create(DatabaseType databaseType, string connectionString)
         {
-            switch(databaseType)
+            string typeName = string.Empty;
+            switch (databaseType)
             {
                 case DatabaseType.MariaDB:
-                    return new Providers.MariaDB.DatabaseAccessHelper(connectionString);
+                    typeName = "PL.DataAccess.Providers.MariaDB.DatabaseAccessHelper, PL.DataAccess.Providers.MariaDB";
+                    break;
                 case DatabaseType.OracleDatabase:
-                    return new Providers.OracleDatabase.DatabaseAccessHelper(connectionString);
+                    typeName = "PL.DataAccess.Providers.OracleDatabase.DatabaseAccessHelper, PL.DataAccess.Providers.OracleDatabase";
+                    break;
                 case DatabaseType.PostgreSQL:
-                    return new Providers.PostgreSQL.DatabaseAccessHelper(connectionString);
-                default:
-                    return null;
+                    typeName = "PL.DataAccess.Providers.PostgreSQL.DatabaseAccessHelper, PL.DataAccess.Providers.PostgreSQL";
+                    break;
+            }
+
+            var type = Type.GetType(typeName);
+            if(string.IsNullOrWhiteSpace(typeName))
+            {
+                throw new ExecuteException($"{databaseType} is not yet supported.");
+            }
+            else if(type == null)
+            {
+                throw new ExecuteException($"{typeName} Assembly reference is required.");
+            }
+            else
+            {
+                return Activator.CreateInstance(type, connectionString) as IDatabaseAccessHelper;
             }
         }
     }

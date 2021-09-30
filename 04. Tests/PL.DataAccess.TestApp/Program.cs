@@ -18,21 +18,21 @@ namespace PL.DataAccess.TestApp
 
             // MariaDB
             {
-                var helper = PL.DataAccess.Factory.CreateDataAccessHelper(DatabaseType.MariaDB, ConfigurationManager.ConnectionStrings["MariaDB"].ConnectionString);
+                var helper = PL.DataAccess.Factory.Create(DatabaseType.MariaDB, ConfigurationManager.ConnectionStrings["MariaDB"].ConnectionString);
                 var objectList = await helper.ExecuteListAsync<Sample01>("select now() as now;");
                 Console.WriteLine(JsonSerializer.Serialize(objectList, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase }));
             }
 
             // OracleDatabase
             {
-                var helper = PL.DataAccess.Factory.CreateDataAccessHelper(DatabaseType.OracleDatabase, ConfigurationManager.ConnectionStrings["OracleDatabase"].ConnectionString);
+                var helper = PL.DataAccess.Factory.Create(DatabaseType.OracleDatabase, ConfigurationManager.ConnectionStrings["OracleDatabase"].ConnectionString);
                 var objectList = await helper.ExecuteListAsync<Sample01>("SELECT SYSDATE AS NOW FROM DUAL");
                 Console.WriteLine(JsonSerializer.Serialize(objectList, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase }));
             }
 
             // PostgreSQL
             {
-                var helper = PL.DataAccess.Factory.CreateDataAccessHelper(DatabaseType.PostgreSQL, ConfigurationManager.ConnectionStrings["PostgreSQL"].ConnectionString);
+                var helper = PL.DataAccess.Factory.Create(DatabaseType.PostgreSQL, ConfigurationManager.ConnectionStrings["PostgreSQL"].ConnectionString);
                 var objectList = await helper.ExecuteListAsync<Sample01>("select now() as now;");
                 Console.WriteLine(JsonSerializer.Serialize(objectList, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase }));
             }
