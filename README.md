@@ -1,18 +1,18 @@
 # Database Access Helper
 A wrapper library that makes it easy to access data from multiple relational databases using ado.net.
 
-### Assembly
+## Assembly
 | PL.DataAccess
 
-### Usage
+## Usage
 
 1. Create Helper
-    1. var helper = PL.DataAccess.Factory.CreateDataAccessHelper(**DatabaseType**, **ConnectionString**);
+    1. var helper = PL.DataAccess.Factory.Create(**DatabaseType**, **ConnectionString**);
 2. Execute
     1. var objectList = await helper.ExecuteListAsync\<TValue\>(**SQL**, **SqlParameterCollection**);
     2. var affectedCount = await helper.ExecuteNonQueryAsync\<TValue\>(**SQL**, **SqlParameterCollection**);
 
-### Example
+## Example
 
 ```csharp
 public class Sample01
@@ -21,7 +21,7 @@ public class Sample01
 }
 ```
 
-#### 1. MariaDB
+### 1. MariaDB
 ```csharp
 var helper = PL.DataAccess.Factory.Create(DatabaseType.MariaDB, @"Server=localhost; Port=3306; User ID=root; Password=password; Database=mysql;");
 var objectList = await helper.ExecuteListAsync<Sample01>("select now() as now;");
@@ -29,15 +29,15 @@ Console.WriteLine(JsonSerializer.Serialize(objectList, new JsonSerializerOptions
 ```
 | [{"now":"2021-01-01T00:00:00"}]
 
-#### 2. OracleDatabase
+### 2. OracleDatabase
 ```csharp
-var helper = PL.DataAccess.Factory.Create(DatabaseType.OracleDatabase, @"Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=XE))); User Id=C##ORAUSER; Password=ORAUSER;");
+var helper = PL.DataAccess.Factory.Creat(DatabaseType.OracleDatabase, @"Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=XE))); User Id=C##ORAUSER; Password=ORAUSER;");
 var objectList = await helper.ExecuteListAsync<Sample01>("SELECT SYSDATE AS NOW FROM DUAL");
 Console.WriteLine(JsonSerializer.Serialize(objectList, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase }));
 ```
 | [{"now":"2021-01-01T00:00:00"}]
 
-#### 3. PostgreSQL
+### 3. PostgreSQL
 ```csharp
 var helper = PL.DataAccess.Factory.Create(DatabaseType.PostgreSQL, "User ID=postgres; Password=postgres; Host=localhost; Port=5432; Database=postgres; Pooling=true; Connection Lifetime=0;");
 var objectList = await helper.ExecuteListAsync<Sample01>("select now() as now;");
@@ -45,7 +45,7 @@ Console.WriteLine(JsonSerializer.Serialize(objectList, new JsonSerializerOptions
 ```
 | [{"now":"2021-01-01T00:00:00.000000+09:00"}]
 
-### Reference
+## Reference
 * [MySqlConnector](https://www.nuget.org/packages/MySqlConnector/)
 * [Oracle.ManagedDataAccess.Core](https://www.nuget.org/packages/Oracle.ManagedDataAccess.Core/)
 * [Npgsql](https://www.nuget.org/packages/Npgsql/)
