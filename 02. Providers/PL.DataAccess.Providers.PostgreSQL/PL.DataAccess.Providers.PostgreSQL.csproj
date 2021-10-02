@@ -11,6 +11,7 @@
     <PackageTags>DataAccess</PackageTags>
     <Authors>plitiri</Authors>
     <Product>PL.DataAccess</Product>
+    <PackageLicenseFile>license.txt</PackageLicenseFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -23,6 +24,10 @@
 
   <ItemGroup>
     <None Include="icon.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="license.txt">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
