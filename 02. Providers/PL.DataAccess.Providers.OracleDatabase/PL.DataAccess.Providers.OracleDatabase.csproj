@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <Copyright>MIT</Copyright>
     <RepositoryUrl>https://github.com/plitiri/PL.DataAccess</RepositoryUrl>
     <PackageProjectUrl>https://github.com/plitiri/PL.DataAccess</PackageProjectUrl>
@@ -12,6 +12,8 @@
     <Authors>plitiri</Authors>
     <Product>PL.DataAccess</Product>
     <PackageLicenseFile>license.txt</PackageLicenseFile>
+    <Nullable>enable</Nullable>
+    <Version>1.1.0</Version>
   </PropertyGroup>
 
   <ItemGroup>

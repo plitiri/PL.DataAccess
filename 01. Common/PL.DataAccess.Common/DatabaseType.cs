@@ -1,26 +1,9 @@
-﻿using System;
+﻿namespace PL.DataAccess;
 
-namespace PL.DataAccess.Common
+public enum DatabaseType
 {
-    public enum DatabaseType
-    {
-        /* RDBMS, Relational DataBase Management System
-         */
-
-        //MicrosoftSQLServer,
-        MariaDB,
-        //MySQL,
-        OracleDatabase,
-        PostgreSQL,
-        //SQLite,
-
-        /* NoSQL, non SQL
-         */
-        //MongoDB,
-
-        /* TSDB, Time-series Databas
-         */
-        //InfluxDB,
-
-    }
+    MicrosoftSQLServer,
+    MariaDB,
+    OracleDatabase,
+    PostgreSQL,
 }
