@@ -2,31 +2,31 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <Copyright>MIT</Copyright>
-    <PackageProjectUrl>https://github.com/plitiri/PL.DataAccess</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/plitiri/PL.DataAccess</RepositoryUrl>
-    <PackageTags>DataAccess</PackageTags>
-    <Description>A wrapper library that makes it easy to access data from multiple relational databases using ado.net</Description>
-    <PackageIcon>icon.png</PackageIcon>
-    <PackageIconUrl />
-    <Authors>plitiri</Authors>
-    <PackageLicenseFile>license.txt</PackageLicenseFile>
+    <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <Version>1.1.0</Version>
+    <Authors>plitiri</Authors>
+    <Product>PL.DataAccess</Product>
+    <Description>A wrapper library that makes it easy to access data from multiple relational databases using ado.net</Description>
+    <Copyright>MIT</Copyright>
+    <PackageProjectUrl>https://github.com/plitiri/PL.DataAccess</PackageProjectUrl>
+    <PackageIcon>icon.png</PackageIcon>
+    <RepositoryUrl>https://github.com/plitiri/PL.DataAccess</RepositoryUrl>
+    <PackageTags>DataAccess</PackageTags>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="4.1.0" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\01. Common\PL.DataAccess.Common\PL.DataAccess.Common.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="icon.png">
+    <None Update="icon.png">
       <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
-    <None Include="license.txt">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
+      <PackagePath>\</PackagePath>
     </None>
   </ItemGroup>
 
