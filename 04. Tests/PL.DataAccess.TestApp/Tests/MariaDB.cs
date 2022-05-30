@@ -13,10 +13,10 @@ public class MariaDB
         if (helper != null)
         {
             var objectList1 = await helper.ExecuteListAsync("select now() as now;");
-            Console.WriteLine(JsonSerializer.Serialize(objectList1, Constants.DefaultJsonSerializerOptions));
+            Console.WriteLine(JsonSerializer.Serialize(objectList1, DataAccessOptions.DefaultJsonSerializerOptions));
 
             var objectList2 = await helper.ExecuteListAsync<Sample01>("select now() as now;");
-            Console.WriteLine(JsonSerializer.Serialize(objectList2, Constants.DefaultJsonSerializerOptions));
+            Console.WriteLine(JsonSerializer.Serialize(objectList2, DataAccessOptions.DefaultJsonSerializerOptions));
         }
     }
 }

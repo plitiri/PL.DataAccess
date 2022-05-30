@@ -21,7 +21,7 @@ A wrapper library that makes it easy to access data from multiple relational dat
 ```csharp
 var helper = DataAccessFactory.Create(DatabaseType.MicrosoftSQLServer, @"Database Source=localhost,1433; User ID=sa; Password=password; Database=sql;");
 var objectList = await helper.ExecuteListAsync("SELECT @name AS name, GETDATE() as now;", new() { { "NAME", "PL" } });
-Console.WriteLine(JsonSerializer.Serialize(objectList));
+Console.WriteLine(JsonSerializer.Serialize(objectList, DataAccessOptions.DefaultJsonSerializerOptions));
 ```
 | [{"name":"PL", "now":"2021-01-01T00:00:00"}]
 
@@ -29,7 +29,7 @@ Console.WriteLine(JsonSerializer.Serialize(objectList));
 ```csharp
 var helper = DataAccessFactory.Create(DatabaseType.MariaDB, @"Server=localhost; Port=3306; User ID=root; Password=password; Database=mysql;");
 var objectList = await helper.ExecuteListAsync("SELECT @name AS name, NOW() as now;", new() { { "NAME", "PL" } });
-Console.WriteLine(JsonSerializer.Serialize(objectList));
+Console.WriteLine(JsonSerializer.Serialize(objectList, DataAccessOptions.DefaultJsonSerializerOptions));
 ```
 | [{"name":"PL", "now":"2021-01-01T00:00:00"}]
 
@@ -37,7 +37,7 @@ Console.WriteLine(JsonSerializer.Serialize(objectList));
 ```csharp
 var helper = DataAccessFactory.Create(DatabaseType.OracleDatabase, @"Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=XE))); User Id=C##ORAUSER; Password=ORAUSER;");
 var objectList = await helper.ExecuteListAsync("SELECT :name AS name, SYSDATE AS NOW FROM DUAL", new() { { "NAME", "PL" } });
-Console.WriteLine(JsonSerializer.Serialize(objectList));
+Console.WriteLine(JsonSerializer.Serialize(objectList, DataAccessOptions.DefaultJsonSerializerOptions));
 ```
 | [{"name":"PL", "now":"2021-01-01T00:00:00"}]
 
@@ -45,7 +45,7 @@ Console.WriteLine(JsonSerializer.Serialize(objectList));
 ```csharp
 var helper = DataAccessFactory.Create(DatabaseType.PostgreSQL, "Host=localhost; Port=5432; User ID=postgres; Password=postgres; Database=postgres; Pooling=true; Connection Lifetime=0;");
 var objectList = await helper.ExecuteListAsync("SELECT @name AS name, NOW() as now;", new() { { "NAME", "PL" } });
-Console.WriteLine(JsonSerializer.Serialize(objectList));
+Console.WriteLine(JsonSerializer.Serialize(objectList, DataAccessOptions.DefaultJsonSerializerOptions));
 ```
 | [{"name":"PL", "now":"2021-01-01T00:00:00.000000+09:00"}]
 

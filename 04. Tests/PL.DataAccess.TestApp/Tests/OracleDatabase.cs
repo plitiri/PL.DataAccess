@@ -13,10 +13,10 @@ public class OracleDatabase
         if (helper != null)
         {
             var objectList1 = await helper.ExecuteListAsync("SELECT SYSDATE AS NOW FROM DUAL");
-            Console.WriteLine(JsonSerializer.Serialize(objectList1, Constants.DefaultJsonSerializerOptions));
+            Console.WriteLine(JsonSerializer.Serialize(objectList1, DataAccessOptions.DefaultJsonSerializerOptions));
 
             var objectList2 = await helper.ExecuteListAsync<Sample01>("SELECT SYSDATE AS NOW FROM DUAL");
-            Console.WriteLine(JsonSerializer.Serialize(objectList2, Constants.DefaultJsonSerializerOptions));
+            Console.WriteLine(JsonSerializer.Serialize(objectList2, DataAccessOptions.DefaultJsonSerializerOptions));
         }
     }
 }

@@ -13,13 +13,13 @@ public class PostgreSQL
         if (helper != null)
         {
             var objectList1 = await helper.ExecuteListAsync("select now() as now;");
-            Console.WriteLine(JsonSerializer.Serialize(objectList1, Constants.DefaultJsonSerializerOptions));
+            Console.WriteLine(JsonSerializer.Serialize(objectList1, DataAccessOptions.DefaultJsonSerializerOptions));
 
             var objectList2 = await helper.ExecuteListAsync<Sample01>("select now() as now;");
-            Console.WriteLine(JsonSerializer.Serialize(objectList2, Constants.DefaultJsonSerializerOptions));
+            Console.WriteLine(JsonSerializer.Serialize(objectList2, DataAccessOptions.DefaultJsonSerializerOptions));
 
             var objectList3 = await helper.ExecuteListAsync<MyTable>("select * from mytable where name = @name", new() { { "NAME", "AA001" } });
-            Console.WriteLine(JsonSerializer.Serialize(objectList3, Constants.DefaultJsonSerializerOptions));
+            Console.WriteLine(JsonSerializer.Serialize(objectList3, DataAccessOptions.DefaultJsonSerializerOptions));
         }
     }
 }
