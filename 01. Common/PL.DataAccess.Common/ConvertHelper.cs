@@ -32,7 +32,29 @@ public class ConvertHelper
                     if (query.Any())
                     {
                         var value = query.Select(x => x.Value).FirstOrDefault();
-                        property.SetValue(obj, value);
+
+                        try
+                        {
+                            property.SetValue(obj, value == DBNull.Value ? null : value);
+                        }
+                        // Database Column 타입과 TValue Property 타입이 다를경우
+                        catch(Exception ex)
+                        {
+                            var propertyType = property.PropertyType;
+                            var isNullable = false;
+                            if (property.PropertyType.IsGenericType && property.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>))
+                            {
+                                isNullable = true;
+                                propertyType = Nullable.GetUnderlyingType(property.PropertyType);
+                            }
+
+                            switch (Type.GetTypeCode(propertyType))
+                            {
+                                case TypeCode.Decimal:
+                                    property.SetValue(obj, isNullable ? ConvertHelper.ToNullableDecimal(value) : ConvertHelper.ToDecimal(value));
+                                    break;
+                            }
+                        }
                     }
                 }
                 response.Add(obj);
@@ -42,5 +64,29 @@ public class ConvertHelper
         }
 
         return default(TValue);
+    }
+
+    public static decimal? ToNullableDecimal(object? obj)
+    {
+        try
+        {
+            return Convert.ToDecimal(obj);
+        }
+        catch
+        {
+            return null;
+        }
+    }
+
+    public static decimal ToDecimal(object? obj)
+    {
+        try
+        {
+            return Convert.ToDecimal(obj);
+        }
+        catch
+        {
+            return 0;
+        }
     }
 }
