@@ -62,6 +62,9 @@ public class ConvertHelper
                                 case TypeCode.DateTime:
                                     property.SetValue(obj, isNullable ? ConvertHelper.ToNullableDateTime(value) : ConvertHelper.ToDateTime(value));
                                     break;
+                                case TypeCode.Boolean:
+                                    property.SetValue(obj, isNullable ? ConvertHelper.ToNullableBoolean(value) : ConvertHelper.ToBoolean(value));
+                                    break;
                             }
                         }
                     }
@@ -168,6 +171,30 @@ public class ConvertHelper
         catch
         {
             return DateTime.MinValue;
+        }
+    }
+
+    public static bool? ToNullableBoolean(object? obj)
+    {
+        try
+        {
+            return Convert.ToBoolean(obj);
+        }
+        catch
+        {
+            return null;
+        }
+    }
+
+    public static bool ToBoolean(object? obj)
+    {
+        try
+        {
+            return Convert.ToBoolean(obj);
+        }
+        catch
+        {
+            return false;
         }
     }
 }
