@@ -1,20 +1,18 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <Product>PL.DataAccess</Product>
     <Version>1.1.0</Version>
+    <Authors>plitiri</Authors>
+    <Product>PL.DataAccess</Product>
     <Description>A wrapper library that makes it easy to access data from multiple relational databases using ado.net</Description>
-    <RepositoryUrl>https://github.com/plitiri/PL.DataAccess</RepositoryUrl>
+    <Copyright>MIT</Copyright>
     <PackageProjectUrl>https://github.com/plitiri/PL.DataAccess</PackageProjectUrl>
     <PackageIcon>icon.png</PackageIcon>
-    <PackageIconUrl />
+    <RepositoryUrl>https://github.com/plitiri/PL.DataAccess</RepositoryUrl>
     <PackageTags>DataAccess</PackageTags>
-    <PackageLicenseFile>license.txt</PackageLicenseFile>
-    <Copyright>MIT</Copyright>
-    <Authors>plitiri</Authors>
   </PropertyGroup>
 
   <ItemGroup>
@@ -30,9 +28,6 @@
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
-    <None Include="license.txt">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
   </ItemGroup>
+
 </Project>
