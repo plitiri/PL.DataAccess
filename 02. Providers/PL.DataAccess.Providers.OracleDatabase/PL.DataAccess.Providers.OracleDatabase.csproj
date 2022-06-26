@@ -2,18 +2,17 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <Product>PL.DataAccess</Product>
+    <Version>1.1.0</Version>
+    <Description>A wrapper library that makes it easy to access data from multiple relational databases using ado.net</Description>
     <Copyright>MIT</Copyright>
     <RepositoryUrl>https://github.com/plitiri/PL.DataAccess</RepositoryUrl>
     <PackageProjectUrl>https://github.com/plitiri/PL.DataAccess</PackageProjectUrl>
-    <Description>A wrapper library that makes it easy to access data from multiple relational databases using ado.net</Description>
     <PackageIcon>icon.png</PackageIcon>
-    <PackageIconUrl />
     <PackageTags>DataAccess</PackageTags>
     <Authors>plitiri</Authors>
-    <Product>PL.DataAccess</Product>
-    <PackageLicenseFile>license.txt</PackageLicenseFile>
-    <Nullable>enable</Nullable>
-    <Version>1.1.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
